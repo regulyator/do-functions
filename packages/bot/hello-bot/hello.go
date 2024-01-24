@@ -13,6 +13,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"regexp"
 	"strconv"
 )
 
@@ -20,6 +21,12 @@ const happyCherryStickerUniqId = "AgADBQADwDZPEw"
 const gaySticker = "CAACAgIAAxkBAAJ6r2WxDxSejRPDLFM4I0MIgwdfNTo5AAJCAANkYXEufUbkbOo3Zmg0BA"
 const shameSticker = "CAACAgIAAxkBAAN_ZNn4wzhLcOx-PhIFpnxBbXTm9FcAAtcDAAJ06TMGuqdkHDQwKf4wBA"
 const firedSticker = "CAACAgIAAxkBAAN9ZNn4stKLlzim_wRBlL5mJNZnIlMAAtkDAAJ06TMGvQu3rl5frtQwBA"
+
+// rick and morty
+const showMe = "CAACAgEAAxkBAAJ6sWWxEH0lwQoGveWMam6UuFgIKDoiAALrAAPFiJwEqmH7rt_Ho8c0BA"
+const sun = "CAACAgEAAxkBAAJ6s2WxELbOLexIn6AOmYOt_MFTgQF_AAJKAQACxYicBIIh0c0RNlDRNAQ"
+const pooppyApprove = "CAACAgEAAxkBAAJ6tWWxENKiJBX2JfYee-bj4ZmgW6qMAALHAAPFiJwEln6SIWEmzTs0BA"
+const homeless = "CAACAgEAAxkBAAJ6t2WxEPMbyZT3DhHdpKir5GwosPGNAAKnAAPFiJwEeVDrf3sAAVBBNAQ"
 const telegramApiBaseUrl = "https://api.telegram.org/bot"
 const telegramApiSendStickerMethod = "sendSticker"
 
@@ -45,6 +52,7 @@ type Sticker struct {
 }
 
 func Main(update Update) {
+	releaseRegex, _ := regexp.Compile(`(?i)релиз`)
 
 	if update.Message.Sticker.FileUniqId == happyCherryStickerUniqId {
 		replyMap := map[int]string{
@@ -54,6 +62,15 @@ func Main(update Update) {
 		}
 
 		_ = sendReplyStickerToTelegram(update.Message.Id, update.Message.Chat.Id, replyMap[rand.Intn(3)])
+	} else if releaseRegex.MatchString(update.Message.Text) {
+		replyMap := map[int]string{
+			0: showMe,
+			1: sun,
+			2: pooppyApprove,
+			3: homeless,
+		}
+
+		_ = sendReplyStickerToTelegram(update.Message.Id, update.Message.Chat.Id, replyMap[rand.Intn(4)])
 	}
 
 }
