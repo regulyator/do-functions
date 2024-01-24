@@ -17,7 +17,7 @@ import (
 )
 
 const happyCherryStickerUniqId = "AgADBQADwDZPEw"
-const gaySticker = "CAACAgIAAxkBAANjZNn1ccdS0m3cjMrPNnxQAAHpj9y3AAJCAANkYXEufUbkbOo3ZmgwBA"
+const gaySticker = "CAACAgIAAxkBAAJ6r2WxDxSejRPDLFM4I0MIgwdfNTo5AAJCAANkYXEufUbkbOo3Zmg0BA"
 const shameSticker = "CAACAgIAAxkBAAN_ZNn4wzhLcOx-PhIFpnxBbXTm9FcAAtcDAAJ06TMGuqdkHDQwKf4wBA"
 const firedSticker = "CAACAgIAAxkBAAN9ZNn4stKLlzim_wRBlL5mJNZnIlMAAtkDAAJ06TMGvQu3rl5frtQwBA"
 const telegramApiBaseUrl = "https://api.telegram.org/bot"
